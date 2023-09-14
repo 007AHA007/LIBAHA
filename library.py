@@ -24,7 +24,7 @@ class LibraryManagementSystem:
         lblMember.grid(row=0,column=0,sticky=W)
 
         coMember=ttk.Combobox(DataFrameLeft,font=("times new roman ", 12 ,"bold" ),width=27,state="readonly")
-        coMember["value"]=("Admin Staff","Student","Lecturer")
+        coMember["value"]=["Admin Staff","Student","Lecturer"]
         coMember.grid(row=0,column=1)
 
         lblPRN=Label(DataFrameLeft,bg="Maroon",fg="White",text="PRN No ",font=("times new roman ", 12 ,"bold" ),padx=2,pady=6)
@@ -70,7 +70,7 @@ class LibraryManagementSystem:
         lblBookId=Label(DataFrameLeft,bg="Maroon",fg="White",text="Book ID ",font=("times new roman ", 12 ,"bold" ),padx=2,pady=6)
         lblBookId.grid(row=0,column=2,sticky=W)
         txtBookId=Entry(DataFrameLeft,font=("times new roman ", 12 ,"bold" ),width=28)
-        txtBookId.grid(row=1,column=3)
+        txtBookId.grid(row=0,column=3)
 
         lblBookTitle=Label(DataFrameLeft,bg="Maroon",fg="White",text="Book Title ",font=("times new roman ", 12 ,"bold" ),padx=2,pady=6)
         lblBookTitle.grid(row=1,column=2,sticky=W)
@@ -114,18 +114,60 @@ class LibraryManagementSystem:
         txtActualPrice=Entry(DataFrameLeft,font=("times new roman ", 12 ,"bold" ),width=28)
         txtActualPrice.grid(row=8,column=3)
 
+        #Dataframe right
+
+    
+
 
         DataFrameRight=LabelFrame(frame,text="Book Details",bg ="Maroon", fg="white",bd =12,relief =RIDGE,font =("times new roman ", 12 ,"bold" ))
         DataFrameRight.place(x=901,y=5,width=540,height=350)
+
+        self.txtBox=Text(DataFrameRight,font =("times new roman ", 12 ,"bold" ),width=32, height=16,padx=2,pady=6)
+        self.txtBox.grid(row=0,column=2)
+
+        listScrollbar=Scrollbar(DataFrameRight)
+        listScrollbar.grid(row=0,column=1,sticky="ns")
+
+        listBooks=['To Kill a Mockingbird', 'Pride and Prejudice', 'The Great Gatsby', '1984', 'The Catcher in the Rye', 'Brave New World', 'The Lord of the Rings', 'The Hobbit', 'Moby-Dick', 'The Grapes of Wrath', 'The Scarlet Letter', 'War and Peace', 'The Odyssey', 'The Alchemist', 'The Hunger Games','Moby-Dick', 'The Grapes of Wrath', 'The Scarlet Letter', 'War and Peace', 'The Odyssey', 'The Alchemist', 'The Hunger Games', 'The Da Vinci Code', 'The Shining', 'Gone with the Wind', 'The Chronicles of Narnia', 'The Road', 'Fahrenheit 451', 'Crime and Punishment', 'Wuthering Heights', 'The Sun Also Rises', 'The Old Man and the Sea', 'One Hundred Years of Solitude', 'To the Lighthouse', 'The Stranger', 'The Bell Jar', 'A Tale of Two Cities']
+        listBox=Listbox(DataFrameRight,font =("times new roman ", 12 ,"bold" ),width=20,height=16,yscrollcommand=listScrollbar.set)
+        listBox.grid(row=0,column=0,padx=4)
+        listScrollbar.config(command=listBox.yview)
+
+        for item in listBooks:
+            listBox.insert(END,item)
+
 
         #Buttons Frame
 
         framebutton=Frame(self.root,bd=12,relief=RIDGE ,padx=20,bg="Maroon")
         framebutton.place(x=0,y=510,width =1550,height=70)
 
+        btnAddData=Button(framebutton,text="Add Data",font =("times new roman ", 12 ,"bold" ),width=23,bg="Maroon",fg="white")
+        btnAddData.grid(row=0,column=0)
+
+        btnAddData=Button(framebutton,text="Show Data",font =("times new roman ", 12 ,"bold" ),width=23,bg="Maroon",fg="white")
+        btnAddData.grid(row=0,column=1)
+
+        btnAddData=Button(framebutton,text="Update ",font =("times new roman ", 12 ,"bold" ),width=23,bg="Maroon",fg="white")
+        btnAddData.grid(row=0,column=2)
+
+        btnAddData=Button(framebutton,text="Delete",font =("times new roman ", 12 ,"bold" ),width=23,bg="Maroon",fg="white")
+        btnAddData.grid(row=0,column=3)
+        
+        btnAddData=Button(framebutton,text="Reset",font =("times new roman ", 12 ,"bold" ),width=23,bg="Maroon",fg="white")
+        btnAddData.grid(row=0,column=4)
+
+        btnAddData=Button(framebutton,text="Exist",font =("times new roman ", 12 ,"bold" ),width=23,bg="Maroon",fg="white")
+        btnAddData.grid(row=0,column=5)
+
+        
+
         #Information Frame
-        frameInformation=Frame(self.root,bd=12,relief=RIDGE ,padx=20,bg="Maroon")
-        frameInformation.place(x=0,y=580,width =1550,height=220)
+        FrameDetails=Frame(self.root,bd=12,relief=RIDGE ,padx=20,bg="Maroon")
+        FrameDetails.place(x=0,y=580,width =1550,height=220)
+
+        Table_frame=Frame(FrameDetails,bd=6,relief=RIDGE,bg="powder blue")
+        FrameDetails.place(x=0,y=590,width=1460,height=190)
 
         
        
